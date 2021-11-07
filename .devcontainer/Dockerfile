@@ -1,7 +1,5 @@
-# Load variables
+# Select image
 ARG JAVA_VERSION
-
-# Choice image
 FROM mcr.microsoft.com/vscode/devcontainers/java:0-${JAVA_VERSION}
 
 # Update apt
