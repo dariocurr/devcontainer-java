@@ -10,11 +10,11 @@
 			"MAVEN_VERSION": "3.6.3",
 			"INSTALL_GRADLE": "false",
 			"GRADLE_VERSION": "",
-		}
+		},
 	},
 	"settings": { 
 		"java.home": "/docker-java-home",
-		"maven.executable.path": "/usr/local/sdkman/candidates/maven/current/bin/mvn"
+		"maven.executable.path": "/usr/local/sdkman/candidates/maven/current/bin/mvn",
 	},
 	"extensions": ["vscjava.vscode-java-pack"],
 	"runArgs": [
