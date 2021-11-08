@@ -1,13 +1,16 @@
-# Select image
+# select image
 ARG JAVA_VERSION
 FROM mcr.microsoft.com/vscode/devcontainers/java:0-${JAVA_VERSION}
 
-# Update apt
+# update apt
 RUN apt-get update \
     && apt upgrade -y \
     && export DEBIAN_FRONTEND=noninteractive
 
-# Install Maven or Gradle
+# add zsh configuration
+COPY .devcontainer/.zshrc .
+
+# install Maven or Gradle
 ARG INSTALL_MAVEN
 ARG MAVEN_VERSION
 ARG INSTALL_GRADLE
