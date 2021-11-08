@@ -17,9 +17,5 @@
 		"maven.executable.path": "/usr/local/sdkman/candidates/maven/current/bin/mvn",
 	},
 	"extensions": ["vscjava.vscode-java-pack"],
-	"runArgs": [
-		"--env-file",
-		".env",
-	],
 	"remoteUser": "vscode",
 }
