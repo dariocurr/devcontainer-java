@@ -1,6 +1,8 @@
 # select image
 ARG JAVA_VERSION
 FROM mcr.microsoft.com/vscode/devcontainers/java:0-${JAVA_VERSION}
+LABEL author="dariocurr@gmail.com" maintainer="dariocurr@gmail.com" version="0.0.1"
+
 
 # update apt
 RUN apt-get update \
