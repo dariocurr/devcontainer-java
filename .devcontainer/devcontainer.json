@@ -2,15 +2,7 @@
 	"name": "Java",
 	"build": {
 		"dockerfile": "Dockerfile",
-		"args": {
-			// Append -bullseye or -buster to pin to an OS version.
-			// Use the -bullseye variants on local arm64/Apple Silicon.
-			"JAVA_VERSION": "11-bullseye",
-			"INSTALL_MAVEN": "true",
-			"MAVEN_VERSION": "3.6.3",
-			"INSTALL_GRADLE": "false",
-			"GRADLE_VERSION": "",
-		},
+		"args": {},
 	},
 	"settings": { 
 		"java.home": "/docker-java-home",
