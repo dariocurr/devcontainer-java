@@ -1,3 +1,5 @@
+# for format details, see https://docs.docker.com/engine/reference/builder/
+
 # select image
 # append -bullseye or -buster to pin to an OS version. Use the -bullseye variants on local arm64/Apple Silicon.
 ARG JAVA_VERSION="11-bullseye"

@@ -1,8 +1,10 @@
+// for format details, see https://aka.ms/vscode-remote/devcontainer.json
 {
 	"name": "Java",
 	"build": {
 		"dockerfile": "Dockerfile",
-		"args": {},
+		"context": "..",
+		// avoid specifying args here to prevent errors when using classic docker build
 	},
 	"settings": { 
 		"java.home": "/docker-java-home",
