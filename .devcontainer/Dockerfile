@@ -19,5 +19,9 @@ ARG GRADLE_VERSION=""
 RUN if [ "${INSTALL_MAVEN}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install maven \"${MAVEN_VERSION}\""; fi \
     && if [ "${INSTALL_GRADLE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install gradle \"${GRADLE_VERSION}\""; fi
 
-# add zsh configuration
-COPY .devcontainer/.zshrc /home/vscode/
+# add zsh configuration and replace oh-my-zsh with antigen
+USER vscode
+WORKDIR /home/vscode/
+RUN rm -r .oh-my-zsh \
+    && git clone https://github.com/zsh-users/antigen.git .antigen
+COPY .devcontainer/.zshrc .
