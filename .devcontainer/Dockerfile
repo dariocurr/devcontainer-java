@@ -7,8 +7,8 @@ FROM mcr.microsoft.com/vscode/devcontainers/java:0-${JAVA_VERSION}
 LABEL author="dariocurr@gmail.com" maintainer="dariocurr@gmail.com" version="0.0.1"
 
 # update apt
-RUN apt update \
-    && apt upgrade -y \
+RUN apt -qq update \
+    && apt -qq upgrade -y \
     && export DEBIAN_FRONTEND=noninteractive
 
 # install Maven or Gradle
@@ -23,5 +23,5 @@ RUN if [ "${INSTALL_MAVEN}" = "true" ]; then su vscode -c "umask 0002 && . /usr/
 USER vscode
 WORKDIR /home/vscode/
 RUN rm -r .oh-my-zsh \
-    && git clone https://github.com/zsh-users/antigen.git .antigen
+    && git clone -q https://github.com/zsh-users/antigen.git .antigen
 COPY .devcontainer/.zshrc .
