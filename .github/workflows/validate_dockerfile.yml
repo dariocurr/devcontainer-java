@@ -1,6 +1,6 @@
 # for format details, see https://docs.github.com/actions
 
-name: Validate `Dockerfile`
+name: Validate Dockerfile
 
 on:
   push:
