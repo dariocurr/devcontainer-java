@@ -4,12 +4,13 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": "..",
-		// avoid specifying args here to prevent errors when using classic docker build
+		"args": {
+			"USER": "vscode"
+		}
 	},
-	"settings": { 
-		"java.home": "/docker-java-home",
-		"maven.executable.path": "/usr/local/sdkman/candidates/maven/current/bin/mvn",
+	"settings": {
+		"java.jdt.ls.java.home": "/docker-java-home",
+		"maven.executable.path": "/usr/local/sdkman/candidates/maven/current/bin/mvn"
 	},
-	"extensions": ["vscjava.vscode-java-pack"],
-	"remoteUser": "vscode",
+	"remoteUser": "vscode"
 }

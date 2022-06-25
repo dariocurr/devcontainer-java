@@ -1,9 +1,9 @@
 # for format details, see https://docs.docker.com/engine/reference/builder/
 
+ARG VARIANT="11"
+
 # select image
-# see here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.195.0/containers/java/.devcontainer/base.Dockerfile
-ARG JAVA_VERSION="11-bullseye"
-FROM mcr.microsoft.com/vscode/devcontainers/java:0-${JAVA_VERSION}
+FROM mcr.microsoft.com/vscode/devcontainers/java:${VARIANT}
 LABEL author="dariocurr@gmail.com" maintainer="dariocurr@gmail.com" version="0.0.1"
 
 # update apt
@@ -19,9 +19,12 @@ ARG GRADLE_VERSION=""
 RUN if [ "${INSTALL_MAVEN}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install maven \"${MAVEN_VERSION}\""; fi \
     && if [ "${INSTALL_GRADLE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install gradle \"${GRADLE_VERSION}\""; fi
 
+# read and change user
+ARG USER
+USER ${USER}
+
 # add zsh configuration and replace oh-my-zsh with antigen
-USER vscode
-WORKDIR /home/vscode/
-RUN rm -r .oh-my-zsh \
-    && git clone -q https://github.com/zsh-users/antigen.git .antigen
-ADD --chown=vscode https://gist.githubusercontent.com/dariocurr/9792ae1fb6ddf736d8fea9e20eb13e26/raw/ .zshrc
+WORKDIR /home/${USER}/
+RUN rm -r .oh-my-zsh; \
+    git clone -q https://github.com/zsh-users/antigen.git .antigen;
+ADD --chown=${USER} https://gist.githubusercontent.com/dariocurr/9792ae1fb6ddf736d8fea9e20eb13e26/raw/ .zshrc
